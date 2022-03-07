@@ -1,0 +1,10 @@
+<body>
+
+  <p>
+    The full precision and binarized models we created worked well on the MNIST data, obtaining accuracy in the high 90s for both the Tensorflow and PyTorch implementations. While the SVHN and CIFAR-10 models present lower accuracies relative to the MNIST models (83%~86% and 62%~64% respectively). The full precision and binarized models have similar performance. On average, the accuracy of the binarized versions of our models is only 2-4% lower than our full precision models.</p>
+  </p>
+</p>
+  <p>
+    Based on our results in section 5.3 to 5.5 (Quarter 2 experiments), binarizing LSTMs is possible. There was about an 8% drop in accuracy between the full precision and binarized models, which is more than the drop in accuracy for our MLP. Since LSTMs are more complicated networks, it is possible that more bits are necessary to achieve high accuracy for this model. Increasing the number of bits used in our quantized MLP generally increases the accuracy of the model, but not necessarily. It is possible that the bits where the accuracy drops may use poor values for quantizing the weights. </p>
+
+</body>
