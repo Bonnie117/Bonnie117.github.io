@@ -13,7 +13,11 @@
 In the first part of the project, we studied the methods introduced in the paper “Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations”. We also reproduced the methods and experiments described in the paper using two more modernized libraries, Tensorflow (<a href="https://github.com/lwilliams620/dsc180a-section/blob/main/180A%20-%20Q1%20Half%20Project/tensorflow_mnist_binary.py">TensorFlow Implementation</a>) and PyTorch (<a href="https://github.com/lwilliams620/dsc180a-section/blob/main/180A%20-%20Q1%20Half%20Project/DSC180A-A12%20Pytorch.ipynb">PyTorch Implementation</a>), instead of Theano which was what the paper originally used.
 </p>
     <h4>Investigation & Analysis</h4>
-
+    <p>Our baseline MLP uses dropout and batch normalization layers, along with three hidden dense layers, where each dense layer represents perceptron nodes. The parameters used in the model are the same as the paper we followed, with a couple of exceptions. The paper uses a decaying learning rate, starting at 0.003 and ending at 0.0000003. Our model uses a static learning rate of 0.001 because this achieved the best results. The paper also uses 1000 epochs to train; however, our model only uses 50. This is due to our model overfitting with more epochs.
+    <p>Our binarized MLP uses the same layer setup, parameters, and inputs as the baseline model. However, we also implemented an early stopper with a patience level of 1 (i.e. the model stops training after it fails to reduce the validation loss) to ensure our model does not overfit. The dense layers are also changed so that they use the binarization methods described in the paper. We used the Larq library which modifies Tensorflow’s classes to binarize the weights with a sign function and compute the gradient with a straight-through estimator.
+    <p>
+    Our Tensorflow version had an accuracy of 96.46% for the binary model and an accuracy of 98.57% for the full precision model for the MNIST dataset. The PyTorch version had an accuracy of 98.04% for the binary model and an accuracy of 98.52% for the full precision model for the MNITS dataset. Both versions of the implementation had a similar performance as the paper’s implementation for the full precision model (98.7%), but a lower accuracy for the binary version (99.04%). We believe that this discrepancy is due to the random number generator being used in Tensorflow and PyTorch, which might cause our versions of the model to select a smaller portion of the training data to be used as the validation set, causing the model to stop training earlier than the paper’s model.
+  </p>
     <h4>Results</h4>
       <h5>BNNs Accuracy</h5>
       <img src="insert/BNN.png" width="600">
@@ -83,7 +87,7 @@ During the second half of the project, we hope to explore how using different nu
   </p>
 
   <h4>Analysis</h4>
-  <p></p>
+  <p>As shown in the comparison figures, Blue line is the quantized weights, orange line is the activation function. Left graph represents the original Hard-Tan function and right graph represents our modified Hyperbolic-Tan function. Our modification of activation function demonstrates a better optimization. </p>
   <img src="insert/Q2activation.png" width="400">
   <h4>Results</h4>
   <h5>Qunatized MLP </h5>
