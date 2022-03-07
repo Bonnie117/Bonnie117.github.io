@@ -1,6 +1,6 @@
 <body>
 
-  <img src="insert/genbnn.png" width="450">
+
   <p>
 Neural networks are a class of machine learning algorithms, modeled loosely after the human brain. It is used to model complex patterns in datasets with multiple hidden layers and non-linear activation functions.  </p>
 </p>
@@ -8,7 +8,7 @@ Neural networks are a class of machine learning algorithms, modeled loosely afte
   <p>
     An artificial neural network consists of node layers, containing an input layer, hidden layer(s), and an output layer. Each node (neuron) has an associated weight and activation function. It takes an input and outputs an activation, which is passed onto the next layer. Neural networks rely on training data to improve their performance over time. There are generally 2 ways of training a neural network: 1) feedforward: flowing in one direction only, from input to output 2) backpropagation: move in the opposite direction, from output to input. Most NNs are feedforward, but we can also train NN through a combination of both feedforward and backpropagation. binarized neural networks (BNN) are similar to regular feedforward neural networks (NN). One difference is that the weights and activations in a BNN are constrained to be only two values: 1 and -1, hence the name “binarized”.</p>
 </p>
-
+  <img src="insert/genbnn.png" width="450">
   <p>
     To train a BNN, the paper suggests constraining both the weights and activations to either +1 or -1. The reason is that +1 and -1 are very advantageous from a hardware perspective in which run-time on GPU can be greatly reduced. This is because +1 and -1 can be stored in fewer bits than a typical 32-bit float. Using a technique known as “SWAR,” it is possible to group smaller bits into a single 32-bit register on the GPU, reducing the number of clock cycles necessary to perform a computation. To transform the real-valued variable into binarized weights, the paper utilized two different binarization functions. We will introduce more in methods part and project paper.
   </p>
