@@ -11,16 +11,76 @@
   <h3>Quarter 1</h3>
     <p>
 In the first part of the project, we studied the methods introduced in the paper “Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations”. We also reproduced the methods and experiments described in the paper using two more modernized libraries, Tensorflow and PyTorch, instead of Theano which was what the paper originally used.
+</p>
     <h4>Investigation & Analysis</h4>
     <h4>Results</h4>
+    <script src="/js/echarts.js"></script>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    var option;
 
+    option = {
+      title: {
+        text: 'BNNs Accuracy Chart'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {},
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        name: 'Accuracy',
+        axisLabel: {
+          formatter: '{value}%'
+        },
+        min: 0,
+        max: 100,
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        data: [
+        'TensorFlow MNIST',
+        'PyTorch MNIST',
+        'Pytorch SVHN',
+        'PyTorch CIFAR-10'
+        ]
+      },
+      series: [
+      {
+        name: 'Binary Accuracy',
+        type: 'bar',
+        data: [96.46, 98.04, 83.02, 62.94],
+        color: '#ffbcd9'
+      },
+      {
+        name: 'FP Accuracy',
+        type: 'bar',
+        data: [98.57, 98.52, 86.42, 63.62]
+      }
+      ]
+    };
+
+    option && myChart.setOption(option);
+</script>
 </p>
 
   <h3>Quarter 2</h3>
   <p>
 During the second half of the project, we hope to explore how using different numbers of bits affects the accuracy of our models, especially for RNN and LSTM, since the paper mentioned how RNN and LSTM did not work well for 2 bits and needed 4 bits instead. Furthermore, we will also investigate how other functions, other than the HardTanh function, during backpropagation or a different combination of several layers and Neuron sizes might affect NNs’ accuracy, size, and power consumptions.
   </p>
-  
+
   <h4>Experiments</h4>
   <h4>Results</h4>
 
