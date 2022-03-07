@@ -1,4 +1,4 @@
-# DSC180B Project
+# Investigation on BNNs and Further Exploration of Language Models
 
 
 
